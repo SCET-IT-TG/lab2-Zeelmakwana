@@ -1,70 +1,55 @@
+// Exercise 1: Data Setup
+use companyDB;
 
+// Insert 5 documents into employees
 db.employees.insertMany([
   {
-    name: "Meet Solanki",
-    dept: "IT",          
-    salary: 75000,
-    age: 28
+    name: "Rahul",         
+    department: "IT",
+    salary: 60000,
+    age: 32
   },
   {
-    name: "Zeel",
-    dept: "HR",
-    salary: 45000,
-    age: 55
-  },
-  {
-    name: "Smit Sapariya",
-    dept: "Sales",
-    salary: 55000,
-    age: 39
-  },
-  {
-    name: "Kartik Vala",
-    dept: "IT",
-    salary: 40000,
-    age: 45
-  },
-  {
-    name: "Upen Sapariya",
-    dept: "HR",
+    name: "Priya",
+    department: "HR",
     salary: 25000,
     age: 24
   },
   {
-    name: "Rahul",
-    dept: "IT",         
-    salary: 42000,
+    name: "Amit",
+    department: "Sales",
+    salary: 55000,
     age: 40
   },
   {
-    name: "Anita Desai",
-    dept: "Finance",
-    salary: 60000,
-    age: 35
+    name: "Sneha",
+    department: "IT",
+    salary: 75000,
+    age: 28
   },
   {
-    name: "Ravi Patel",
-    dept: "Marketing",
-    salary: 28000,
-    age: 23
+    name: "Vikram",
+    department: "HR",
+    salary: 45000,
+    age: 35
   }
 ]);
 
-// Exercise 02
-db.employees.find({ dept: "IT" });
+// Exercise 2: Simple Find Queries
+db.employees.find({ department: "IT" });
 db.employees.find({ name: "Rahul" });
 
-// Exercise 03
+// Exercise 3: Formatting & Distinct
 db.employees.find().pretty();
-db.employees.distinct("dept");
+db.employees.distinct("department");
 
-// Exercise 04
+// Exercise 4: Salary Analysis ($gt, $lt)
 db.employees.find({ salary: { $gt: 50000 } });
 db.employees.find({ salary: { $lt: 30000 } });
 
-// Exercise 05
+// Exercise 5: Age Filtering ($gte, $lte)
 db.employees.find({ age: { $gte: 30 } });
 db.employees.find({ age: { $lte: 25 } });
 
-// Exercise 06
+// Exercise 6: Range Queries
 db.employees.find({ salary: { $gte: 40000, $lte: 80000 } });
