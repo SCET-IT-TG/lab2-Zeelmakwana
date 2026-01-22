@@ -1,5 +1,6 @@
 db = db.getSiblingDB("companyDB");
-// Exercise 01
+
+// Exercise 01: Insert sample employees
 db.employees.insertMany([
   {
     name: "Zeel Makwana",
@@ -8,58 +9,64 @@ db.employees.insertMany([
     age: 28
   },
   {
-    name: "Meet bhai",
+    name: "Meet Bhai",
     department: "HR",
     salary: 45000,
     age: 55
   },
   {
-    name: "krish shah",
+    name: "Krish Shah",
     department: "Sales",
     salary: 55000,
     age: 39
   },
   {
-    name: "prit vala",
+    name: "Prit Vala",
     department: "IT",
     salary: 50000,
     age: 45
   },
   {
-    name: "sahil sapariya",
+    name: "Sahil Sapariya",
     department: "HR",
     salary: 25000,
     age: 24
   },
   {
     name: "Rahul",
-    department: "Sales",
+    department: "IT",  
     salary: 32000,
     age: 40
+  },
+  {
+    name: "Anita Desai",
+    department: "Finance",
+    salary: 60000,
+    age: 35
+  },
+  {
+    name: "Ravi Patel",
+    department: "Marketing",
+    salary: 28000,
+    age: 23
   }
 ]);
 
-// Exercise 02
+// Exercise 02: Queries
 db.employees.find({ department: "IT" });
-
 db.employees.find({ name: "Rahul" });
 
-// Exercise 03
+// Exercise 03: Show all employees and distinct departments
 db.employees.find().pretty();
-
 db.employees.distinct("department");
 
-// Exercise 04
+// Exercise 04: Salary queries
 db.employees.find({ salary: { $gt: 50000 } });
-
 db.employees.find({ salary: { $lt: 30000 } });
 
-// Exercise 05
+// Exercise 05: Age queries
 db.employees.find({ age: { $gte: 30 } });
-
 db.employees.find({ age: { $lte: 25 } });
 
-// Exercise 06
-db.employees.find({
-  salary: { $gte: 40000, $lte: 80000 }
-});
+// Exercise 06: Salary between 40k and 80k
+db.employees.find({ salary: { $gte: 40000, $lte: 80000 } });
